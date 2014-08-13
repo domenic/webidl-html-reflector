@@ -15,7 +15,7 @@ describe("Reflecting boolean WebIDL attributes", () => {
             assert.strictEqual(sut(el, "attr3"), true);
         });
 
-        it("must return true if the content attribute is set even when called with a different case", () => {
+        it("must return true if the content attribute is set (different casing)", () => {
             var el = new StubElement({ attr1: "", attr2: "false", attr3: "blahblah" });
 
             assert.strictEqual(sut(el, "Attr1"), true);
@@ -27,6 +27,57 @@ describe("Reflecting boolean WebIDL attributes", () => {
             var el = new StubElement();
 
             assert.strictEqual(sut(el, "attr"), false);
+        });
+    });
+
+    describe("setting", () => {
+        var sut = reflector["boolean"].set;
+
+        it("must remove the content attribute if set to false", () => {
+            var el = new StubElement({ attr1: "", attr2: "false", attr3: "blahblah" });
+
+            sut(el, "attr1", false);
+            sut(el, "attr2", false);
+            sut(el, "attr3", false);
+
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+        });
+
+        it("must remove the content attribute if set to false (different casing)", () => {
+            var el = new StubElement({ attr1: "", attr2: "false", attr3: "blahblah" });
+
+            sut(el, "Attr1", false);
+            sut(el, "aTTr2", false);
+            sut(el, "ATTR3", false);
+
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+            assert.strictEqual(el.hasAttribute("attr1"), false);
+        });
+
+        it("must not disturb content attributes that are not there when set to false", () => {
+            var el = new StubElement();
+
+            sut(el, "attr", false);
+
+            assert.strictEqual(el.hasAttribute("attr"), false);
+        });
+
+        it("must set the content attribute to the empty string if set to true", () => {
+            var el = new StubElement({ attr1: "", attr2: "false" });
+
+            sut(el, "attr1", true);
+            sut(el, "attr2", true);
+            sut(el, "attr3", true);
+
+            assert.strictEqual(el.hasAttribute("attr1"), true);
+            assert.strictEqual(el.getAttribute("attr1"), "");
+            assert.strictEqual(el.hasAttribute("attr2"), true);
+            assert.strictEqual(el.getAttribute("attr2"), "");
+            assert.strictEqual(el.hasAttribute("attr3"), true);
+            assert.strictEqual(el.getAttribute("attr3"), "");
         });
     });
 });
