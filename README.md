@@ -11,7 +11,7 @@ The rules for this reflection are long and varied, with different rules applying
 This package's main module's default export is an object with a variety of properties, each corresponding to a different WebIDL type. Each type then has `get` and `set` functions which implement the corresponding reflection rules, given an element and a content attribute name. So, it goes something like this:
 
 ```js
-import reflector from "webidl-reflector";
+import reflector from "webidl-html-reflector";
 
 // Should give you the same result as `olElement.reversed`
 reflector["boolean"].get(olElement, "reversed");
