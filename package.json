@@ -1,0 +1,31 @@
+{
+  "name": "webidl-html-reflector",
+  "version": "1.0.0-pre",
+  "description": "Implements the algorithms to reflect HTML content attributes as WebIDL attributes",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:mocha-traceur test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domenic/webidl-html-reflector"
+  },
+  "keywords": [
+    "webidl",
+    "html",
+    "whatwg",
+    "web"
+  ],
+  "files": [
+    "lib/",
+    "LICENSE.md"
+  ],
+  "author": "Domenic Denicola <domenic@domenicdenicola.com> (http://domenic.me/)",
+  "license": "BSD-2-Clause",
+  "bugs": "https://github.com/domenic/webidl-html-reflector/issues",
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "mocha-traceur": "domenic/mocha-traceur#patch-1",
+    "traceur": "^0.0.58"
+  }
+}
