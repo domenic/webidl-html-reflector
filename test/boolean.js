@@ -15,14 +15,6 @@ describe("Reflecting boolean WebIDL attributes", () => {
             assert.strictEqual(sut(el, "attr3"), true);
         });
 
-        it("must return true if the content attribute is set (different casing)", () => {
-            var el = new StubElement({ attr1: "", attr2: "false", attr3: "blahblah" });
-
-            assert.strictEqual(sut(el, "Attr1"), true);
-            assert.strictEqual(sut(el, "aTTr2"), true);
-            assert.strictEqual(sut(el, "ATTR3"), true);
-        });
-
         it("must return false if the content attribute is absent", () => {
             var el = new StubElement();
 
@@ -39,18 +31,6 @@ describe("Reflecting boolean WebIDL attributes", () => {
             sut(el, "attr1", false);
             sut(el, "attr2", false);
             sut(el, "attr3", false);
-
-            assert.strictEqual(el.hasAttribute("attr1"), false);
-            assert.strictEqual(el.hasAttribute("attr1"), false);
-            assert.strictEqual(el.hasAttribute("attr1"), false);
-        });
-
-        it("must remove the content attribute if set to false (different casing)", () => {
-            var el = new StubElement({ attr1: "", attr2: "false", attr3: "blahblah" });
-
-            sut(el, "Attr1", false);
-            sut(el, "aTTr2", false);
-            sut(el, "ATTR3", false);
 
             assert.strictEqual(el.hasAttribute("attr1"), false);
             assert.strictEqual(el.hasAttribute("attr1"), false);
