@@ -23,9 +23,9 @@ reflector["DOMString"].set(anchorElement, "target", "_blank");
 reflector["DOMString"].set(metaElement, "http-equiv", "refresh");
 ```
 
-It is very important that **you must only pass in values of the expected type**. That is, if you are working with a `boolean` WebIDL attribute, you should only pass in `true` or `false`; if you are working with a `long` WebIDL attribute, you should only pass in JavaScript numbers that are integers within the range [−2147483648, 2147483647]; etc. If you want to be able to handle any JavaScript value, you should first convert it following the appropriate WebIDL conversion rules. (TODO: link to a package for that once I write it.)
+It is very important that **you must only pass in values of the expected type**. That is, if you are working with a `boolean` WebIDL attribute, you should only pass in `true` or `false`; if you are working with a `long` WebIDL attribute, you should only pass in JavaScript numbers that are integers within the range [−2147483648, 2147483647]; etc. If you want to be able to handle any JavaScript value, you should first convert it following the appropriate WebIDL conversion rules, perhaps using the [webidl-conversions](https://github.com/domenic/webidl-conversions) package.
 
-If you fail to type-check your values beforehand, this package's behavior is undefined; in particular, we won't validate the types ahead of time for you.
+If you fail to convert your values beforehand, this package's behavior is undefined; in particular, we won't validate the types ahead of time for you.
 
 ## Status
 
