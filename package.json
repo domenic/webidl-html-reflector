@@ -1,6 +1,6 @@
 {
   "name": "webidl-html-reflector",
-  "version": "1.0.0-pre",
+  "version": "1.0.0",
   "description": "Implements the algorithms to reflect HTML content attributes as WebIDL attributes",
   "main": "lib/index.js",
   "scripts": {
