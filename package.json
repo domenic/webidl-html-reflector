@@ -1,6 +1,6 @@
 {
   "name": "webidl-html-reflector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Implements the algorithms to reflect HTML content attributes as WebIDL attributes",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,8 @@
     "traceur": "^0.0.58"
   },
   "browserify": {
-    "transform": ["es6ify"]
+    "transform": [
+      "es6ify"
+    ]
   }
 }
